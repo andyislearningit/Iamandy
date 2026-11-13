@@ -1,98 +1,1358 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#fff9ee">
-    <meta name="description" content="A little bilingual hello from Andy in Vietnam.">
-    <title>Andy’s Little Corner</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <header class="topbar">
-      <a class="wordmark" href="#home" aria-label="Andy’s Little Corner home">
-        <span class="wordmark-sparkle" aria-hidden="true">✳</span> andy<span class="wordmark-dot">.</span>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I AM ANDY | ANDY67 — Official Gaming & Tech Portfolio</title>
+  <meta name="description" content="Welcome to the digital world of Andy (ANDY67) - 10-year-old student, gamer, tech explorer, and superhero fan from Vietnam!">
+  
+  <!-- Google Fonts: Orbitron (Futuristic Display), Rajdhani (Cyber Tech), Plus Jakarta Sans (Readable Clean) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+  <!-- Background Interactive Canvas -->
+  <canvas id="cyber-canvas" aria-hidden="true"></canvas>
+  <div class="cyber-grid-overlay" aria-hidden="true"></div>
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <!-- Rocket Animation Container -->
+  <div id="rocket-stage" class="rocket-stage" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ==================== HEADER & NAVIGATION ==================== -->
+  <header class="cyber-header" id="navbar">
+    <div class="header-container">
+      <!-- Logo: ANDY67 -->
+      <a href="#home" class="cyber-logo" aria-label="I AM ANDY Home">
+        <span class="logo-badge">LVL 10</span>
+        <div class="logo-text-wrapper">
+          <span class="logo-prefix">I AM</span>
+          <span class="logo-main">ANDY<span class="logo-number">67</span></span>
+        </div>
+        <span class="status-indicator" title="Andy is Online!">
+          <span class="status-dot"></span>
+          <span class="status-text">ONLINE</span>
+        </span>
       </a>
-      <nav class="navigation" aria-label="Main navigation">
-        <a href="#about" data-en="About me" data-vi="Về mình">About me</a>
-        <a href="#hello" data-en="Say hello" data-vi="Lời chào">Say hello</a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="cyber-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active"><span class="nav-num">01</span><span class="nav-title">HOME</span></a></li>
+          <li><a href="#about" class="nav-link"><span class="nav-num">02</span><span class="nav-title">ABOUT</span></a></li>
+          <li><a href="#hobbies" class="nav-link"><span class="nav-num">03</span><span class="nav-title">HOBBIES</span></a></li>
+          <li><a href="#favorites" class="nav-link"><span class="nav-num">04</span><span class="nav-title">FAVORITES</span></a></li>
+          <li><a href="#dreams" class="nav-link"><span class="nav-num">05</span><span class="nav-title">DREAMS</span></a></li>
+          <li><a href="#gallery" class="nav-link"><span class="nav-num">06</span><span class="nav-title">GALLERY</span></a></li>
+          <li><a href="#fun-zone" class="nav-link fun-highlight"><span class="nav-num">07</span><span class="nav-title">FUN ZONE 🎮</span></a></li>
+        </ul>
       </nav>
-      <button class="language-switch" type="button" aria-label="Switch to Vietnamese">
-        <span aria-hidden="true">🌐</span><span class="language-label">Tiếng Việt</span>
-      </button>
-    </header>
 
-    <main>
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <div class="hello-pill"><span class="wave" aria-hidden="true">👋</span><span data-en="A little hello from Vietnam" data-vi="Một lời chào nhỏ từ Việt Nam">A little hello from Vietnam</span></div>
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <!-- Sound FX Toggle Button -->
+        <button id="sfx-toggle" class="cyber-icon-btn" aria-label="Toggle Cyber Sound Effects" title="Sound Effects (Click to Enable/Mute)">
+          <span class="sfx-icon">🔊</span>
+          <span class="sfx-label">SFX</span>
+        </button>
+
+        <!-- Quick Theme Switcher Pill -->
+        <button id="quick-theme-btn" class="cyber-icon-btn theme-switch-btn" aria-label="Switch Cyber Theme" title="Switch Theme Glow">
+          <span class="theme-icon">⚡</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-menu-btn" class="hamburger-btn" aria-label="Open Mobile Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-nav" class="mobile-drawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-user">
+          <span class="drawer-avatar">🎮</span>
+          <div>
+            <strong>ANDY67</strong>
+            <small>Player 1 • Level 10</small>
+          </div>
+        </div>
+        <button id="close-drawer-btn" class="cyber-close-btn" aria-label="Close Mobile Navigation">&times;</button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#home" class="mobile-nav-link"><span>01</span> HOME</a></li>
+        <li><a href="#about" class="mobile-nav-link"><span>02</span> ABOUT</a></li>
+        <li><a href="#hobbies" class="mobile-nav-link"><span>03</span> HOBBIES</a></li>
+        <li><a href="#favorites" class="mobile-nav-link"><span>04</span> FAVORITES</a></li>
+        <li><a href="#dreams" class="mobile-nav-link"><span>05</span> DREAMS</a></li>
+        <li><a href="#gallery" class="mobile-nav-link"><span>06</span> GALLERY</a></li>
+        <li><a href="#fun-zone" class="mobile-nav-link highlight"><span>07</span> FUN ZONE 🎮</a></li>
+      </ul>
+      <div class="drawer-footer">
+        <p>I AM ANDY • READY PLAYER ONE</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 1. HOME / HERO SECTION ==================== -->
+    <section class="hero-section" id="home">
+      <div class="hero-container">
+        <!-- Left Column: Welcome Content -->
+        <div class="hero-content">
+          <!-- Cyber HUD Pill -->
+          <div class="hud-tag">
+            <span class="hud-blink"></span>
+            <span class="hud-text">SYSTEM READY // HERO PROTOCOL ACTIVATED</span>
+          </div>
+
+          <!-- Main Heading -->
           <h1 class="hero-title">
-            <span data-en="Hi, I’m" data-vi="Xin chào, mình là">Hi, I’m</span>
-            <span class="name">Andy<span class="name-star" aria-hidden="true">✦</span></span>
+            <span class="greeting-line">HELLO! I AM ANDY <span class="wave-hand">👋</span></span>
+            <span class="callsign-line">GAMER TAG: <span class="neon-red-text">ANDY</span><span class="neon-blue-text">67</span></span>
           </h1>
-          <p class="hero-description" data-en="I’m 10 years old, from Vietnam, and happy you stopped by my little corner of the internet." data-vi="Mình 10 tuổi, đến từ Việt Nam. Thật vui vì bạn ghé thăm góc nhỏ của mình trên internet.">I’m 10 years old, from Vietnam, and happy you stopped by my little corner of the internet.</p>
-          <a class="primary-button" href="#about"><span data-en="Come on in" data-vi="Cùng khám phá nhé">Come on in</span><span aria-hidden="true">↘</span></a>
-        </div>
 
-        <div class="hero-art photo-card">
-          <img
-            src="andy-portrait.jpg"
-            alt="Andy smiling and making a peace sign."
-            data-en-alt="Andy smiling and making a peace sign."
-            data-vi-alt="Andy đang mỉm cười và giơ dấu chữ V."
-            width="768"
-            height="2048"
-          >
-          <div class="art-caption"><span class="caption-dot" aria-hidden="true"></span><span data-en="That’s me!" data-vi="Đó là mình!">That’s me!</span></div>
-        </div>
-        <span class="hero-index" aria-hidden="true">01 / 02</span>
-      </section>
+          <!-- Subtitle -->
+          <h2 class="hero-subtitle">
+            <span class="terminal-prompt">&gt;</span> <span class="typing-text">Welcome to my digital world!</span>
+          </h2>
 
-      <section class="about-section" id="about">
-        <div class="section-heading">
-          <span class="section-kicker" data-en="A LITTLE ABOUT ME" data-vi="ĐÔI ĐIỀU VỀ MÌNH">A LITTLE ABOUT ME</span>
-          <h2 data-en="Small introduction,<br>big smile." data-vi="Lời giới thiệu nhỏ,<br>nụ cười thật tươi.">Small introduction,<br>big smile.</h2>
-        </div>
-        <div class="about-content">
-          <p class="about-lead" data-en="I’m Andy — a curious kid growing up in beautiful Vietnam." data-vi="Mình là Andy — một bạn nhỏ ham tìm hiểu, lớn lên ở Việt Nam xinh đẹp.">I’m Andy — a curious kid growing up in beautiful Vietnam.</p>
-          <p class="about-detail" data-en="This is my little space to say hi, share a bit about myself, and celebrate learning something new. Thanks for visiting!" data-vi="Đây là góc nhỏ để mình gửi lời chào, kể một chút về bản thân và cùng vui vì mỗi ngày học thêm điều mới. Cảm ơn bạn đã ghé thăm!">This is my little space to say hi, share a bit about myself, and celebrate learning something new. Thanks for visiting!</p>
-          <div class="fact-row">
-            <div class="fact-card">
-              <span class="fact-icon" aria-hidden="true">🎂</span>
-              <span class="fact-label" data-en="AGE" data-vi="TUỔI">AGE</span>
-              <strong data-en="10 years old" data-vi="10 tuổi">10 years old</strong>
+          <!-- Description -->
+          <p class="hero-description">
+            I am Andy, a student who loves technology, gaming, superheroes, and exploring new things.
+            Step into my cyber command center to discover my favorite games, futuristic dreams, and creative adventures!
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#about" class="cyber-btn btn-neon-red">
+              <span class="btn-glow"></span>
+              <span class="btn-icon">🚀</span>
+              <span class="btn-text">EXPLORE MY WORLD</span>
+              <span class="btn-corner"></span>
+            </a>
+            <a href="#fun-zone" class="cyber-btn btn-neon-blue">
+              <span class="btn-glow"></span>
+              <span class="btn-icon">🎮</span>
+              <span class="btn-text">LET'S PLAY</span>
+              <span class="btn-corner"></span>
+            </a>
+          </div>
+
+          <!-- Quick Stats / Gamer Badges -->
+          <div class="hero-quick-stats">
+            <div class="quick-stat-item">
+              <span class="stat-number">10</span>
+              <span class="stat-label">YEARS OLD</span>
             </div>
-            <div class="fact-card">
-              <span class="fact-icon" aria-hidden="true">📍</span>
-              <span class="fact-label" data-en="FROM" data-vi="ĐẾN TỪ">FROM</span>
-              <strong data-en="Vietnam" data-vi="Việt Nam">Vietnam</strong>
+            <div class="stat-separator">/</div>
+            <div class="quick-stat-item">
+              <span class="stat-number">GR.5</span>
+              <span class="stat-label">TECH CADET</span>
             </div>
-            <div class="fact-card">
-              <span class="fact-icon" aria-hidden="true">✨</span>
-              <span class="fact-label" data-en="MY MINDSET" data-vi="TINH THẦN">MY MINDSET</span>
-              <strong data-en="Keep learning" data-vi="Luôn học hỏi">Keep learning</strong>
+            <div class="stat-separator">/</div>
+            <div class="quick-stat-item">
+              <span class="stat-number">VN 🇻🇳</span>
+              <span class="stat-label">LOCATION</span>
+            </div>
+            <div class="stat-separator">/</div>
+            <div class="quick-stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">EXTROVERT</span>
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="hello-section" id="hello">
-        <span class="hello-decoration" aria-hidden="true">✳</span>
-        <span class="section-kicker" data-en="THAT’S ME!" data-vi="ĐÓ LÀ MÌNH!">THAT’S ME!</span>
-        <h2 data-en="Thanks for stopping by." data-vi="Cảm ơn bạn đã ghé thăm.">Thanks for stopping by.</h2>
-        <p data-en="I hope my little corner made you smile. Have a lovely day!" data-vi="Mong là góc nhỏ này đã khiến bạn mỉm cười. Chúc bạn một ngày thật vui nhé!">I hope my little corner made you smile. Have a lovely day!</p>
-        <a class="back-to-top" href="#home"><span data-en="Back to the top" data-vi="Lên đầu trang">Back to the top</span><span aria-hidden="true">↑</span></a>
-      </section>
-    </main>
+        <!-- Right Column: Andy's Cyber Avatar Display -->
+        <div class="hero-visual">
+          <div class="cyber-avatar-frame">
+            <!-- Rotating Hologram HUD Rings -->
+            <div class="hud-ring ring-outer"></div>
+            <div class="hud-ring ring-middle"></div>
+            <div class="hud-ring ring-inner"></div>
 
-    <footer class="footer">
-      <a class="footer-brand" href="#home">andy<span>.</span></a>
-      <p data-en="Made with a little sunshine ☀" data-vi="Làm nên với một chút nắng ☀">Made with a little sunshine ☀</p>
-      <span class="footer-year">© Andy</span>
-    </footer>
-  </body>
+            <!-- Cyber Tech Badges Floating -->
+            <div class="floating-badge badge-top-right">
+              <span class="badge-icon">🛡️</span>
+              <span>IRON MAN TECH</span>
+            </div>
+            <div class="floating-badge badge-bottom-left">
+              <span class="badge-icon">⛏️</span>
+              <span>MINECRAFT & ROBLOX</span>
+            </div>
+            <div class="floating-badge badge-top-left">
+              <span class="badge-icon">⚡</span>
+              <span>SUPER SPEED</span>
+            </div>
+
+            <!-- Avatar Picture Container -->
+            <div class="avatar-image-wrapper">
+              <img 
+                id="andy-avatar-img" 
+                src="andy-portrait.jpg" 
+                alt="Andy smiling with a cool peace sign in his digital gaming realm"
+                class="avatar-photo"
+              >
+              <!-- Cyber Scan Overlay -->
+              <div class="avatar-scan-bar"></div>
+              <div class="avatar-vignette"></div>
+
+              <!-- Avatar Photo Switcher Toolbar -->
+              <div class="photo-switcher" title="Click to view Andy's different photos!">
+                <span class="photo-switcher-title">PHOTO:</span>
+                <button class="photo-btn active" data-src="andy-portrait.jpg" aria-label="Portrait Photo">1</button>
+                <button class="photo-btn" data-src="andy-dalat.png" aria-label="Da Lat Adventure Photo">2</button>
+                <button class="photo-btn" data-src="andypicture.jpg" aria-label="Full Profile Photo">3</button>
+              </div>
+            </div>
+
+            <!-- Avatar Status Plaque -->
+            <div class="avatar-plaque">
+              <span class="plaque-dot"></span>
+              <span class="plaque-title">COMMANDER ANDY KANS</span>
+              <span class="plaque-tag">CALLSIGN: ANDY67</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Welcome Screen Bottom Marquee Banner -->
+      <div class="hero-bottom-banner">
+        <div class="ticker-track">
+          <div class="ticker-content">
+            <span class="ticker-star">★</span> THANKS FOR VISITING MY WEBSITE. I AM ANDY!
+            <span class="ticker-star">★</span> GAMING USERNAME: ANDY67
+            <span class="ticker-star">★</span> FUTURE ENGINEER & TECH HERO
+            <span class="ticker-star">★</span> THANKS FOR VISITING MY WEBSITE. I AM ANDY!
+            <span class="ticker-star">★</span> GAMING USERNAME: ANDY67
+            <span class="ticker-star">★</span> FUTURE ENGINEER & TECH HERO
+          </div>
+          <div class="ticker-content" aria-hidden="true">
+            <span class="ticker-star">★</span> THANKS FOR VISITING MY WEBSITE. I AM ANDY!
+            <span class="ticker-star">★</span> GAMING USERNAME: ANDY67
+            <span class="ticker-star">★</span> FUTURE ENGINEER & TECH HERO
+            <span class="ticker-star">★</span> THANKS FOR VISITING MY WEBSITE. I AM ANDY!
+            <span class="ticker-star">★</span> GAMING USERNAME: ANDY67
+            <span class="ticker-star">★</span> FUTURE ENGINEER & TECH HERO
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. ABOUT ME SECTION ==================== -->
+    <section class="section-block" id="about">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>PLAYER DOSSIER // CLASSIFIED INTEL</span>
+          </div>
+          <h2 class="section-title">WHO IS <span class="neon-cyan">ANDY?</span></h2>
+          <p class="section-desc">Get to know the person behind the screen: my school life, superhero traits, and passion for the future!</p>
+        </div>
+
+        <!-- About Grid -->
+        <div class="about-grid">
+          <!-- Card 1: Main Identity Card -->
+          <div class="cyber-card identity-card">
+            <div class="card-corner-tl"></div>
+            <div class="card-corner-br"></div>
+            <div class="card-header">
+              <span class="card-badge">IDENTITY CHIP</span>
+              <span class="card-id">ID: VN-2016-A67</span>
+            </div>
+            <div class="card-profile-header">
+              <div class="profile-thumb">
+                <img src="andy-dalat.png" alt="Andy Kans in Da Lat, Vietnam" class="thumb-img">
+                <span class="online-pip"></span>
+              </div>
+              <div class="profile-info-main">
+                <h3 class="profile-name">Andy Kans</h3>
+                <span class="profile-role">Student • Future Engineer • Gamer</span>
+                <span class="profile-tag">Grade 5 Cadet</span>
+              </div>
+            </div>
+
+            <!-- Key Info List -->
+            <div class="info-data-list">
+              <div class="info-data-item">
+                <span class="data-key"><span class="data-icon">🎂</span> Age:</span>
+                <strong class="data-val">10 years old</strong>
+              </div>
+              <div class="info-data-item">
+                <span class="data-key"><span class="data-icon">📍</span> Location:</span>
+                <strong class="data-val">Vietnam 🇻🇳</strong>
+              </div>
+              <div class="info-data-item">
+                <span class="data-key"><span class="data-icon">🎒</span> Grade:</span>
+                <strong class="data-val">Grade 5</strong>
+              </div>
+              <div class="info-data-item">
+                <span class="data-key"><span class="data-icon">⚡</span> Personality:</span>
+                <strong class="data-val highlight-badge">Extrovert</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Three Words Describing Me -->
+          <div class="cyber-card superpowers-card">
+            <div class="card-corner-tl"></div>
+            <div class="card-corner-br"></div>
+            <div class="card-header">
+              <span class="card-badge red-badge">CORE ATTRIBUTES</span>
+              <span class="card-id">3 SUPERPOWERS</span>
+            </div>
+            <h3 class="card-headline">Three Words Describing Me</h3>
+            <p class="card-subtext">These three core pillars shape everything I do at school, in gaming, and in everyday life:</p>
+
+            <div class="traits-container">
+              <div class="trait-box">
+                <div class="trait-icon-box trait-red">
+                  <span>🛡️</span>
+                </div>
+                <div class="trait-text">
+                  <h4>Reliable</h4>
+                  <p>You can always count on me! Whether helping a friend, doing team projects, or finishing homework on time.</p>
+                </div>
+              </div>
+
+              <div class="trait-box">
+                <div class="trait-icon-box trait-blue">
+                  <span>🔍</span>
+                </div>
+                <div class="trait-text">
+                  <h4>Detail-Oriented</h4>
+                  <p>I notice the fine details, catch tricky bugs, design neat builds in Minecraft, and craft clean work.</p>
+                </div>
+              </div>
+
+              <div class="trait-box">
+                <div class="trait-icon-box trait-purple">
+                  <span>⚡</span>
+                </div>
+                <div class="trait-text">
+                  <h4>Efficient</h4>
+                  <p>Fast, smart, and organized. I solve problems quickly so there is more time to play and invent new ideas!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Passion & Tech Meter -->
+          <div class="cyber-card tech-passion-card">
+            <div class="card-corner-tl"></div>
+            <div class="card-corner-br"></div>
+            <div class="card-header">
+              <span class="card-badge blue-badge">TECH MASTERY</span>
+              <span class="card-id">STATS HUD</span>
+            </div>
+            <h3 class="card-headline">I Love Technology & Learning</h3>
+            <p class="card-subtext">
+              Ever since I first touched a computer, I have been amazed by how software and science power our universe. 
+              I am always curious, experimenting, and hungry to discover new breakthroughs!
+            </p>
+
+            <!-- Skill Progress Bars -->
+            <div class="skill-meters">
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Curiosity & Tech Enthusiasm</span>
+                  <span class="meter-percent">100%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-red" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Gaming & Virtual Building (Minecraft/Roblox)</span>
+                  <span class="meter-percent">98%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-blue" style="width: 98%;"></div>
+                </div>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Problem Solving & Efficiency</span>
+                  <span class="meter-percent">94%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-purple" style="width: 94%;"></div>
+                </div>
+              </div>
+
+              <div class="meter-item">
+                <div class="meter-info">
+                  <span>Piano & Rhythm Harmony</span>
+                  <span class="meter-percent">90%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-gold" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quote callout -->
+            <div class="cyber-quote-box">
+              <span class="quote-symbol">“</span>
+              <p>Every line of code and every new idea is a brick to build tomorrow's world.</p>
+              <span class="quote-author">— Andy Kans (ANDY67)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. MY HOBBIES SECTION ==================== -->
+    <section class="section-block bg-darker" id="hobbies">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>ACTIVITY MODULES // FAVORITE PURSUITS</span>
+          </div>
+          <h2 class="section-title">WHAT I <span class="neon-red">LOVE DOING</span></h2>
+          <p class="section-desc">From conquering virtual worlds in Roblox to mastering the piano and exploring cyber networks!</p>
+        </div>
+
+        <!-- 6 Hobbies Grid -->
+        <div class="cards-grid hobbies-grid">
+          <!-- 1. Playing Roblox -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/roblox.jpg" alt="Roblox Gaming and Metaverse Creation" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-blue">GAMING WORLD</span>
+              <div class="hobby-icon-pill">🎮</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Playing Roblox</h3>
+              <p class="hobby-desc">
+                Diving into millions of 3D community experiences with friends, overcoming challenging obbys, roleplaying, and discovering creative indie game designers!
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#Multiplayer</span>
+                <span class="htag">#ObbyMaster</span>
+                <span class="htag">#RobloxDev</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Playing Minecraft -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/minecraft.jpg" alt="Minecraft Voxel Architecture and Crafting" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-red">CREATIVE MINDS</span>
+              <div class="hobby-icon-pill">⛏️</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Playing Minecraft</h3>
+              <p class="hobby-desc">
+                Constructing gigantic fortresses, crafting redstone automated contraptions, surviving against nocturnal monsters, and mining diamond treasures deep underground.
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#Redstone</span>
+                <span class="htag">#SurvivalMode</span>
+                <span class="htag">#VoxelArt</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Playing the Piano -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/piano.jpg" alt="Acoustic and Grand Piano Keys" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-purple">MUSIC & ART</span>
+              <div class="hobby-icon-pill">🎹</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Playing the Piano</h3>
+              <p class="hobby-desc">
+                Translating feelings and rhythm into beautiful musical notes. I practice melodies, develop finger precision, and enjoy learning songs like "Lemon Tree"!
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#Melody</span>
+                <span class="htag">#BlackAndWhiteKeys</span>
+                <span class="htag">#Harmony</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Surfing the Internet -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/internet.jpg" alt="Global Internet Network and Cyber Space" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-blue">DIGITAL EXPEDITIONS</span>
+              <div class="hobby-icon-pill">🌐</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Surfing the Internet</h3>
+              <p class="hobby-desc">
+                Navigating the vast web to discover science documentaries, superhero lore, gaming walkthroughs, tech news, and fascinating world history.
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#WebExplorer</span>
+                <span class="htag">#CyberKnowledge</span>
+                <span class="htag">#TechTrends</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Going Shopping -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/shopping.jpg" alt="Shopping for Modern Gadgets and Trends" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-gold">LIFESTYLE</span>
+              <div class="hobby-icon-pill">🛍️</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Going Shopping</h3>
+              <p class="hobby-desc">
+                Exploring modern gadget stores, toy emporiums, bookshops, and malls with my family. Finding cool superhero gear and tech accessories is always a thrill!
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#Gadgets</span>
+                <span class="htag">#CoolGear</span>
+                <span class="htag">#WeekendVibes</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. Learning Information Technology -->
+          <article class="hobby-card">
+            <div class="hobby-img-wrapper">
+              <img src="images/coding.jpg" alt="Computer Coding and Futuristic Information Technology" class="hobby-img" loading="lazy">
+              <span class="hobby-badge badge-red">FUTURE TECH</span>
+              <div class="hobby-icon-pill">💻</div>
+            </div>
+            <div class="hobby-body">
+              <h3 class="hobby-title">Learning IT & Coding</h3>
+              <p class="hobby-desc">
+                Studying how computers communicate, how algorithms work, designing websites like this one, and unlocking the power of future artificial intelligence!
+              </p>
+              <div class="hobby-tags">
+                <span class="htag">#WebDevelopment</span>
+                <span class="htag">#ComputerScience</span>
+                <span class="htag">#FutureEngineer</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. MY FAVORITES SECTION ==================== -->
+    <section class="section-block" id="favorites">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>TOP SELECTIONS // PERSONAL BESTS</span>
+          </div>
+          <h2 class="section-title">MY FAVORITE <span class="neon-cyan">THINGS</span></h2>
+          <p class="section-desc">From legendary Marvel superheroes to thrilling video games, loyal pets, and energetic sports!</p>
+        </div>
+
+        <!-- Filter Tabs for Categories -->
+        <div class="filter-bar" role="tablist" aria-label="Favorites Categories">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL FAVORITES</button>
+          <button class="filter-btn" data-filter="games" role="tab" aria-selected="false">🎮 VIDEO GAMES</button>
+          <button class="filter-btn" data-filter="heroes" role="tab" aria-selected="false">🦸 SUPERHEROES</button>
+          <button class="filter-btn" data-filter="animals" role="tab" aria-selected="false">🐾 ANIMALS</button>
+          <button class="filter-btn" data-filter="lifestyle" role="tab" aria-selected="false">🍉 LIFESTYLE & MORE</button>
+        </div>
+
+        <!-- Favorites Cards Grid -->
+        <div class="cards-grid favorites-grid">
+          <!-- 1. Minecraft (Video Games) -->
+          <div class="fav-card" data-category="games">
+            <div class="fav-media">
+              <img src="images/minecraft.jpg" alt="Minecraft Voxel Universe" loading="lazy">
+              <span class="fav-category-pill pill-red">VIDEO GAME</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Minecraft</h3>
+                <span class="fav-rating">★ 10/10</span>
+              </div>
+              <p class="fav-blurb">My endless digital sandbox. Whether mining in the Nether or building grand castles, it lets my imagination run wild!</p>
+              <div class="fav-meta">
+                <span>FAVORITE BLOCK: Diamond Ore</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Roblox (Video Games) -->
+          <div class="fav-card" data-category="games">
+            <div class="fav-media">
+              <img src="images/roblox.jpg" alt="Roblox Metaverse Game" loading="lazy">
+              <span class="fav-category-pill pill-blue">VIDEO GAME</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Roblox</h3>
+                <span class="fav-rating">★ 10/10</span>
+              </div>
+              <p class="fav-blurb">Connecting with friends across Vietnam and worldwide to play high-energy mini-games, tycoon builders, and epic obstacle courses.</p>
+              <div class="fav-meta">
+                <span>USERNAME: ANDY67</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Iron Man (Superheroes) -->
+          <div class="fav-card" data-category="heroes">
+            <div class="fav-media">
+              <img src="images/ironman.jpg" alt="Iron Man Tony Stark Suit" loading="lazy">
+              <span class="fav-category-pill pill-red">SUPERHERO</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Iron Man</h3>
+                <span class="fav-rating">★ TIER S</span>
+              </div>
+              <p class="fav-blurb">Genius, billionaire, engineer! Tony Stark proves that human intelligence, technology, and sheer determination can create miracles.</p>
+              <div class="fav-meta">
+                <span>SUIT: Mark 85 Arc Reactor</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Ant-Man (Superheroes) -->
+          <div class="fav-card" data-category="heroes">
+            <div class="fav-media">
+              <img src="images/antman.jpg" alt="Ant-Man Quantum Realm Hero" loading="lazy">
+              <span class="fav-category-pill pill-red">SUPERHERO</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Ant-Man</h3>
+                <span class="fav-rating">★ TIER S</span>
+              </div>
+              <p class="fav-blurb">Shrinking down to subatomic particles and expanding to giant size! Scott Lang shows that even the smallest hero can save the universe.</p>
+              <div class="fav-meta">
+                <span>POWER: Pym Particles & Quantum Realm</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Doctor Strange (Superheroes) -->
+          <div class="fav-card" data-category="heroes">
+            <div class="fav-media">
+              <img src="images/doctor_strange.jpg" alt="Doctor Strange Mystic Arts and Eye of Agamotto" loading="lazy">
+              <span class="fav-category-pill pill-blue">SUPERHERO</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Doctor Strange</h3>
+                <span class="fav-rating">★ TIER S</span>
+              </div>
+              <p class="fav-blurb">Master of the Mystic Arts and guardian of the Multiverse. His glowing orange spell circles and Cloak of Levitation are peak coolness!</p>
+              <div class="fav-meta">
+                <span>ARTIFACT: Cloak of Levitation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Lions (Animals) -->
+          <div class="fav-card" data-category="animals">
+            <div class="fav-media">
+              <img src="images/lion.jpg" alt="Majestic King Lion" loading="lazy">
+              <span class="fav-category-pill pill-gold">ANIMAL</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Lions</h3>
+                <span class="fav-rating">★ KING</span>
+              </div>
+              <p class="fav-blurb">The King of the Jungle! Majestic, brave, and strong. Lions protect their pride and inspire me to be courageous in everything I try.</p>
+              <div class="fav-meta">
+                <span>TRAIT: Courage & Royalty</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Dogs (Animals) -->
+          <div class="fav-card" data-category="animals">
+            <div class="fav-media">
+              <img src="images/dog.jpg" alt="Loyal and Joyful Dog" loading="lazy">
+              <span class="fav-category-pill pill-blue">ANIMAL</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Dogs</h3>
+                <span class="fav-rating">★ BEST FRIEND</span>
+              </div>
+              <p class="fav-blurb">Man's most loyal companion! Dogs are super energetic, always happy to greet you with wagging tails, and make the sweetest friends.</p>
+              <div class="fav-meta">
+                <span>TRAIT: Loyalty & Joy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Cats (Animals) -->
+          <div class="fav-card" data-category="animals">
+            <div class="fav-media">
+              <img src="images/cat.jpg" alt="Clever and Cute Cat" loading="lazy">
+              <span class="fav-category-pill pill-purple">ANIMAL</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Cats</h3>
+                <span class="fav-rating">★ AGILITY</span>
+              </div>
+              <p class="fav-blurb">Super agile, clever ninja acrobats! Their soft purrs and playful curiosity always brighten up the day.</p>
+              <div class="fav-meta">
+                <span>TRAIT: Stealth & Cuteness</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Watermelon (Food) -->
+          <div class="fav-card" data-category="lifestyle">
+            <div class="fav-media">
+              <img src="images/watermelon.jpg" alt="Juicy Sweet Fresh Watermelon" loading="lazy">
+              <span class="fav-category-pill pill-red">FAVORITE FOOD</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Watermelon</h3>
+                <span class="fav-rating">★ 10/10 DELICIOUS</span>
+              </div>
+              <p class="fav-blurb">Super sweet, crisp, and refreshing! Especially on sunny tropical days in Vietnam, nothing beats cold slices of juicy watermelon.</p>
+              <div class="fav-meta">
+                <span>FLAVOR: Crisp, Sweet & Hydrating</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. Color Red (Color) -->
+          <div class="fav-card" data-category="lifestyle">
+            <div class="fav-media">
+              <img src="images/color_red.jpg" alt="Vibrant Crimson and Neon Red Aesthetic" loading="lazy">
+              <span class="fav-category-pill pill-red">FAVORITE COLOR</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Red (Crimson / Neon)</h3>
+                <span class="fav-rating">★ #1 COLOR</span>
+              </div>
+              <p class="fav-blurb">The color of passion, high-speed energy, Iron Man's suit, and the proud flag of Vietnam! It gives power and boldness to everything.</p>
+              <div class="fav-meta">
+                <span>VIBE: Energy, Strength & Courage</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11. Basketball (Sport) -->
+          <div class="fav-card" data-category="lifestyle">
+            <div class="fav-media">
+              <img src="images/basketball.jpg" alt="Basketball Game Court and Ball" loading="lazy">
+              <span class="fav-category-pill pill-gold">FAVORITE SPORT</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Basketball</h3>
+                <span class="fav-rating">★ SLAM DUNK</span>
+              </div>
+              <p class="fav-blurb">Fast-paced team action! Dribbling, passing, tactical teamwork, and draining a clean swish three-pointer with friends after school.</p>
+              <div class="fav-meta">
+                <span>BENEFIT: Speed, Agility & Teamwork</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12. Music: Lemon Tree (Music) -->
+          <div class="fav-card" data-category="lifestyle">
+            <div class="fav-media">
+              <img src="images/lemon_tree.jpg" alt="Lemon Tree Musical Melody and Sunshine" loading="lazy">
+              <span class="fav-category-pill pill-gold">FAVORITE SONG</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>"Lemon Tree"</h3>
+                <span class="fav-rating">★ TOP TRACK</span>
+              </div>
+              <p class="fav-blurb">The iconic catchy song! Its acoustic rhythm, playful beat, and memorable lyrics make it a delight to sing along to and play on the piano.</p>
+              <div class="fav-meta">
+                <span>GENRE: Pop / Acoustic Classic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 13. Movie: Minecraft Movie (Movie) -->
+          <div class="fav-card" data-category="lifestyle">
+            <div class="fav-media">
+              <img src="images/minecraft_movie.jpg" alt="Minecraft Movie and Block Universe Cinema" loading="lazy">
+              <span class="fav-category-pill pill-blue">FAVORITE MOVIE</span>
+            </div>
+            <div class="fav-content">
+              <div class="fav-header">
+                <h3>Minecraft Movie</h3>
+                <span class="fav-rating">★ CINEMATIC EVENT</span>
+              </div>
+              <p class="fav-blurb">Bringing the blocky Overworld to the grand silver screen! Seeing Steve, creepers, and wild inventions in live-action cinema is an absolute dream.</p>
+              <div class="fav-meta">
+                <span>STATUS: Most Hyped Cinema Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. MY DREAMS SECTION ==================== -->
+    <section class="section-block bg-darker" id="dreams">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>MISSION TIMELINE // ROADMAP TO 2040</span>
+          </div>
+          <h2 class="section-title">MY FUTURE, <span class="neon-purple">MY DREAMS</span></h2>
+          <p class="section-desc">My vision of the future: inventing technology, teaching kids, exploring the world, and building a high-tech home!</p>
+        </div>
+
+        <!-- Futuristic Cyber Timeline -->
+        <div class="timeline-container">
+          <div class="timeline-cyber-spine" aria-hidden="true"></div>
+
+          <!-- Node 1: Become a Reporter -->
+          <div class="timeline-node left-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">🎙️</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 01</div>
+              <div class="timeline-img-wrap">
+                <img src="images/reporter.jpg" alt="News Broadcasting and Journalism Microphone" loading="lazy">
+              </div>
+              <h3 class="timeline-title">Become a Reporter</h3>
+              <p class="timeline-text">
+                Investigating exciting global events, interviewing inspiring inventors and astronauts, and bringing authentic, positive news stories to people all over the world.
+              </p>
+              <div class="timeline-perks">
+                <span>📡 Live Broadcasts</span>
+                <span>🎙️ Storytelling</span>
+                <span>🌍 Global News</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 2: Become an Engineer -->
+          <div class="timeline-node right-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">🤖</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 02</div>
+              <div class="timeline-img-wrap">
+                <img src="images/engineer.jpg" alt="Robotics and Futuristic Engineering Systems" loading="lazy">
+              </div>
+              <h3 class="timeline-title">Become an Engineer</h3>
+              <p class="timeline-text">
+                Designing robotic systems, smart autonomous machines, and cutting-edge software. I want to build technology that makes daily life safer, greener, and more fun.
+              </p>
+              <div class="timeline-perks">
+                <span>⚙️ Robotics & AI</span>
+                <span>💡 Cyber Systems</span>
+                <span>🦾 Innovation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 3: Become a Teacher & Teach Children -->
+          <div class="timeline-node left-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">👨‍🏫</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 03</div>
+              <div class="timeline-img-wrap">
+                <img src="images/teacher.jpg" alt="Teacher Mentoring Children in a Modern Classroom" loading="lazy">
+              </div>
+              <h3 class="timeline-title">Become a Teacher & Teach Children</h3>
+              <p class="timeline-text">
+                Sharing my knowledge, teaching kids how to code, build games, and think creatively. Inspiring the next generation of students to believe in their own ideas!
+              </p>
+              <div class="timeline-perks">
+                <span>📚 Education</span>
+                <span>💻 Coding for Kids</span>
+                <span>🌱 Mentorship</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 4: Visit Hungary & Turkey -->
+          <div class="timeline-node right-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">✈️</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 04</div>
+              <div class="timeline-img-dual">
+                <div class="dual-thumb">
+                  <img src="images/hungary.jpg" alt="Budapest Parliament on the Danube River in Hungary" loading="lazy">
+                  <span class="dual-label">Hungary 🇭🇺</span>
+                </div>
+                <div class="dual-thumb">
+                  <img src="images/turkey.jpg" alt="Historic Istanbul and Cappadocia in Turkey" loading="lazy">
+                  <span class="dual-label">Turkey 🇹🇷</span>
+                </div>
+              </div>
+              <h3 class="timeline-title">Visit Hungary and Turkey</h3>
+              <p class="timeline-text">
+                Exploring the majestic bridges and castles of Budapest in Hungary, and marveling at the historic bazaars, coastlines, and hot air balloons across Cappadocia, Turkey.
+              </p>
+              <div class="timeline-perks">
+                <span>🏰 Historic Castles</span>
+                <span>🎈 Cappadocia Balloons</span>
+                <span>🗺️ World Discovery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 5: Big Dream House with an IT Room -->
+          <div class="timeline-node left-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">🏠</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 05</div>
+              <div class="timeline-img-wrap">
+                <img src="images/dream_house.jpg" alt="Futuristic Eco-Modern House with Tech Labs" loading="lazy">
+              </div>
+              <h3 class="timeline-title">Big Dream House with an IT Room</h3>
+              <p class="timeline-text">
+                Building a modern high-tech home featuring a dedicated IT laboratory with multi-monitor rigs, holographic displays, and workshop stations where I can teach children computing!
+              </p>
+              <div class="timeline-perks">
+                <span>🖥️ Cyber IT Lab</span>
+                <span>🏡 Smart Architecture</span>
+                <span>🤝 Community Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 6: Help My Family & Become a Better Person -->
+          <div class="timeline-node right-node">
+            <div class="node-marker">
+              <span class="node-dot"></span>
+              <span class="node-icon">❤️</span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-tag">DREAM MISSION 06</div>
+              <div class="timeline-img-wrap">
+                <img src="images/family.jpg" alt="Family Love, Care, and Support" loading="lazy">
+              </div>
+              <h3 class="timeline-title">Help My Family & Become a Better Person</h3>
+              <p class="timeline-text">
+                My most cherished mission of all: loving and supporting my parents, caring for my family, practicing kindness every day, and continually growing into a reliable, efficient human being.
+              </p>
+              <div class="timeline-perks">
+                <span>❤️ Gratitude & Love</span>
+                <span>🤝 Giving Back</span>
+                <span>🌟 Personal Growth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. MY GALLERY SECTION ==================== -->
+    <section class="section-block" id="gallery">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>VISUAL ARCHIVES // HIGH-RES HOLOGRAPHIC VAULT</span>
+          </div>
+          <h2 class="section-title">MY AMAZING <span class="neon-red">GALLERY</span></h2>
+          <p class="section-desc">Click any image to enlarge and inspect in full-screen cyber vision mode!</p>
+        </div>
+
+        <!-- Gallery Filter Controls -->
+        <div class="gallery-filters" role="tablist" aria-label="Gallery Categories">
+          <button class="gfilter-btn active" data-gfilter="all">ALL SHOTS</button>
+          <button class="gfilter-btn" data-gfilter="games">MINECRAFT & ROBLOX</button>
+          <button class="gfilter-btn" data-gfilter="superheroes">SUPERHEROES</button>
+          <button class="gfilter-btn" data-gfilter="animals">ANIMALS</button>
+          <button class="gfilter-btn" data-gfilter="tech">GAMING TECH</button>
+          <button class="gfilter-btn" data-gfilter="andy">ANDY'S SNAPSHOTS</button>
+        </div>
+
+        <!-- Gallery Grid (9+ Items with full responsiveness) -->
+        <div class="gallery-grid" id="gallery-container">
+          <!-- 1. Minecraft -->
+          <figure class="gallery-item" data-gcat="games" tabindex="0">
+            <img src="images/minecraft.jpg" alt="Minecraft Voxel Realm and Diamond Mountains" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">MINECRAFT</span>
+              <h4>Endless Voxel Worlds</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 2. Roblox -->
+          <figure class="gallery-item" data-gcat="games" tabindex="0">
+            <img src="images/roblox.jpg" alt="Roblox Cyber Arcade and Avatar Experiences" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ROBLOX</span>
+              <h4>Metaverse Playground</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 3. Iron Man -->
+          <figure class="gallery-item" data-gcat="superheroes" tabindex="0">
+            <img src="images/ironman.jpg" alt="Iron Man Armor Suit with Arc Reactor" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">SUPERHEROES</span>
+              <h4>Iron Man Mark 85</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 4. Ant-Man -->
+          <figure class="gallery-item" data-gcat="superheroes" tabindex="0">
+            <img src="images/antman.jpg" alt="Ant-Man Quantum Navigator" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">SUPERHEROES</span>
+              <h4>Ant-Man & Quantum Tech</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 5. Doctor Strange -->
+          <figure class="gallery-item" data-gcat="superheroes" tabindex="0">
+            <img src="images/doctor_strange.jpg" alt="Doctor Strange Mystic Glyphs and Sanctum Sanctorum" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">SUPERHEROES</span>
+              <h4>Doctor Strange Mystic Arts</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 6. Lions -->
+          <figure class="gallery-item" data-gcat="animals" tabindex="0">
+            <img src="images/lion.jpg" alt="Majestic Wild Golden Lion" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANIMALS</span>
+              <h4>King of the Savannah</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 7. Dogs -->
+          <figure class="gallery-item" data-gcat="animals" tabindex="0">
+            <img src="images/dog.jpg" alt="Cute and Cheerful Golden Retriever Dog" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANIMALS</span>
+              <h4>Loyal Companions</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 8. Cats -->
+          <figure class="gallery-item" data-gcat="animals" tabindex="0">
+            <img src="images/cat.jpg" alt="Curious Green-Eyed Cat" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANIMALS</span>
+              <h4>Stealth & Grace</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 9. Gaming Technology -->
+          <figure class="gallery-item" data-gcat="tech" tabindex="0">
+            <img src="images/gaming_tech.jpg" alt="Ultrawide Neon RGB Battlestation and Mechanical Gaming Rig" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">GAMING TECH</span>
+              <h4>Cyber Battlestation</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 10. Andy in Da Lat (Bonus Authentic Photo) -->
+          <figure class="gallery-item" data-gcat="andy" tabindex="0">
+            <img src="andy-dalat.png" alt="Andy exploring scenic Da Lat, Vietnam" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANDY'S SNAPSHOTS</span>
+              <h4>Exploring Da Lat, Vietnam</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 11. Andy Portrait (Bonus Authentic Photo) -->
+          <figure class="gallery-item" data-gcat="andy" tabindex="0">
+            <img src="andy-portrait.jpg" alt="Andy smiling with high energy" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANDY'S SNAPSHOTS</span>
+              <h4>Andy's Winning Smile</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+
+          <!-- 12. Andy Profile (Bonus Authentic Photo) -->
+          <figure class="gallery-item" data-gcat="andy" tabindex="0">
+            <img src="andypicture.jpg" alt="Andy Kans Full Standing Portrait" class="gallery-thumb" loading="lazy">
+            <figcaption class="gallery-caption">
+              <span class="gallery-cat">ANDY'S SNAPSHOTS</span>
+              <h4>Tech Cadet Andy</h4>
+              <span class="expand-hint">🔍 CLICK TO ENLARGE</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="gallery-modal" class="lightbox-modal" aria-hidden="true" role="dialog" aria-label="Image Lightbox Viewer">
+        <div class="modal-backdrop"></div>
+        <div class="modal-dialog">
+          <button id="modal-close-btn" class="modal-close" aria-label="Close Lightbox">&times;</button>
+          <button id="modal-prev-btn" class="modal-arrow prev-arrow" aria-label="Previous Image">&#10094;</button>
+          <div class="modal-image-box">
+            <img id="modal-img" src="" alt="Enlarged gallery display">
+            <div class="modal-info">
+              <span id="modal-cat" class="modal-category">CATEGORY</span>
+              <h3 id="modal-title">Title Here</h3>
+            </div>
+          </div>
+          <button id="modal-next-btn" class="modal-arrow next-arrow" aria-label="Next Image">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. FUN ZONE – INTERACTIVE GAMES ==================== -->
+    <section class="section-block bg-darker" id="fun-zone">
+      <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header-box">
+          <div class="section-tag-pill">
+            <span class="tag-pulse"></span>
+            <span>ENTERTAINMENT PROTOCOL // 100% INTERACTIVE</span>
+          </div>
+          <h2 class="section-title">ANDY'S FUN ZONE <span class="neon-cyan">🎮</span></h2>
+          <p class="section-desc">Test all the buttons! Every single trigger produces a real JavaScript action, animation, sound effect, or secret reward!</p>
+        </div>
+
+        <!-- The Interactive Button Dashboard -->
+        <div class="fun-dashboard">
+          <!-- 1. FUNNY BUTTON -->
+          <div class="fun-card" id="card-funny">
+            <div class="fun-card-icon">😂</div>
+            <h3 class="fun-card-title">FUNNY BUTTON</h3>
+            <p class="fun-card-sub">Need a good laugh? Tap to generate a hilarious joke with bouncing emojis!</p>
+            <button id="btn-funny" class="interactive-btn btn-amber">
+              <span class="btn-flash"></span>
+              <span>TELL ME A JOKE 🤣</span>
+            </button>
+            <div id="funny-output" class="fun-result-box" aria-live="polite">
+              <span class="result-placeholder">Press the button above for humor!</span>
+            </div>
+          </div>
+
+          <!-- 2. MAGIC BUTTON -->
+          <div class="fun-card" id="card-magic">
+            <div class="fun-card-icon">✨</div>
+            <h3 class="fun-card-title">MAGIC BUTTON</h3>
+            <p class="fun-card-sub">Transforms the website's background atmosphere and glowing neon palette!</p>
+            <button id="btn-magic" class="interactive-btn btn-purple">
+              <span class="btn-flash"></span>
+              <span>CAST MAGIC SPELL 🔮</span>
+            </button>
+            <div id="magic-output" class="fun-result-box" aria-live="polite">
+              <span class="result-placeholder">Current Theme: Cyber Crimson & Cyan</span>
+            </div>
+          </div>
+
+          <!-- 3. SURPRISE BUTTON -->
+          <div class="fun-card" id="card-surprise">
+            <div class="fun-card-icon">🎁</div>
+            <h3 class="fun-card-title">SURPRISE BUTTON</h3>
+            <p class="fun-card-sub">Triggers a random superhero boost, power quote, and confetti pop!</p>
+            <button id="btn-surprise" class="interactive-btn btn-neon-red">
+              <span class="btn-flash"></span>
+              <span>UNBOX SURPRISE 💥</span>
+            </button>
+            <div id="surprise-output" class="fun-result-box" aria-live="polite">
+              <span class="result-placeholder">A mystery awaits behind this button...</span>
+            </div>
+          </div>
+
+          <!-- 4. CLICK COUNTER -->
+          <div class="fun-card" id="card-clicker">
+            <div class="fun-card-icon">⚡</div>
+            <h3 class="fun-card-title">CLICK COUNTER</h3>
+            <p class="fun-card-sub">Power up Andy's energy core! Tap as fast as you can to trigger combo ranks.</p>
+            <button id="btn-clicker" class="interactive-btn btn-neon-blue">
+              <span class="btn-flash"></span>
+              <span>TAP TO CHARGE ⚡</span>
+            </button>
+            <div class="counter-display-box">
+              <div class="counter-stat">
+                <span class="counter-label">TOTAL CLICKS:</span>
+                <span id="click-count" class="counter-big-number">0</span>
+              </div>
+              <div class="counter-rank">
+                <span class="rank-label">CURRENT RANK:</span>
+                <span id="click-rank" class="rank-badge">Novice Cadet</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. SECRET BUTTON -->
+          <div class="fun-card" id="card-secret">
+            <div class="fun-card-icon">🔐</div>
+            <h3 class="fun-card-title">SECRET BUTTON</h3>
+            <p class="fun-card-sub">Classified level 10 vault. Can you bypass the cyber firewall?</p>
+            <button id="btn-secret" class="interactive-btn btn-red-glow">
+              <span class="btn-flash"></span>
+              <span>UNLOCK VAULT 🗝️</span>
+            </button>
+            <div id="secret-output" class="fun-result-box" aria-live="polite">
+              <span class="result-placeholder">Access Restricted: Locked 🔒</span>
+            </div>
+          </div>
+
+          <!-- 6. ROCKET BUTTON -->
+          <div class="fun-card" id="card-rocket">
+            <div class="fun-card-icon">🚀</div>
+            <h3 class="fun-card-title">ROCKET BUTTON</h3>
+            <p class="fun-card-sub">Ignite thrusters and launch an animated rocket across the screen!</p>
+            <button id="btn-rocket" class="interactive-btn btn-gold">
+              <span class="btn-flash"></span>
+              <span>LAUNCH ROCKET 🚀</span>
+            </button>
+            <div id="rocket-output" class="fun-result-box" aria-live="polite">
+              <span class="result-placeholder">Launch pad ready: Stand by for takeoff!</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BONUS INTERACTIVE ARCADE MINI-GAME: TARGET REFLEX -->
+        <div class="arcade-minigame-box">
+          <div class="arcade-header">
+            <div class="arcade-title-group">
+              <span class="arcade-pill">BONUS MINI-GAME</span>
+              <h3>CYBER TARGET REFLEX 🎯</h3>
+            </div>
+            <div class="arcade-stats">
+              <div class="stat-badge">TIME: <span id="game-timer">15</span>s</div>
+              <div class="stat-badge">SCORE: <span id="game-score">0</span> pts</div>
+              <div class="stat-badge">BEST: <span id="game-high">0</span> pts</div>
+            </div>
+          </div>
+
+          <div class="arcade-stage" id="arcade-stage">
+            <div id="game-overlay" class="game-overlay">
+              <h4>READY TO TEST YOUR GAMER REFLEXES?</h4>
+              <p>Click as many glowing targets as you can in 15 seconds!</p>
+              <button id="btn-start-game" class="cyber-btn btn-neon-red">
+                <span class="btn-icon">▶️</span>
+                <span class="btn-text">START ARCADE GAME</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 10. CONTACT AND FOOTER ==================== -->
+  <footer class="cyber-footer" id="contact">
+    <div class="footer-top-accent"></div>
+    <div class="footer-container">
+      <!-- Brand & Mission -->
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <span class="flogo-prefix">I AM</span>
+          <span class="flogo-main">ANDY<span class="flogo-accent">67</span></span>
+        </div>
+        <p class="footer-tagline">
+          10-year-old student, future robotics engineer, pianist, and gaming enthusiast from Vietnam.
+        </p>
+        <div class="footer-status-pill">
+          <span class="fstatus-dot"></span>
+          <span>SYSTEM MISSION: INSPIRE & LEARN DAILY</span>
+        </div>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">NAVIGATION</h4>
+        <ul class="footer-link-list">
+          <li><a href="#home">Home Base</a></li>
+          <li><a href="#about">Who is Andy?</a></li>
+          <li><a href="#hobbies">What I Love Doing</a></li>
+          <li><a href="#favorites">My Favorite Things</a></li>
+          <li><a href="#dreams">Future Roadmap</a></li>
+          <li><a href="#gallery">Amazing Gallery</a></li>
+          <li><a href="#fun-zone">Andy's Fun Zone</a></li>
+        </ul>
+      </div>
+
+      <!-- Gamer Connections / Profiles -->
+      <div class="footer-gamer-col">
+        <h4 class="footer-col-title">PLAYER STATS</h4>
+        <div class="gamer-spec-list">
+          <div class="gspec-row">
+            <span class="gspec-label">CALLSIGN:</span>
+            <strong class="gspec-val">ANDY67</strong>
+          </div>
+          <div class="gspec-row">
+            <span class="gspec-label">GUILD:</span>
+            <strong class="gspec-val">Grade 5 Vietnam Cadets</strong>
+          </div>
+          <div class="gspec-row">
+            <span class="gspec-label">MAIN HERO:</span>
+            <strong class="gspec-val">Iron Man & Ant-Man</strong>
+          </div>
+          <div class="gspec-row">
+            <span class="gspec-label">BUILD ENGINE:</span>
+            <strong class="gspec-val">HTML5 + CSS3 + JS</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mandatory Footer Lines -->
+    <div class="footer-bottom-bar">
+      <div class="bottom-container">
+        <p class="footer-made-by">MADE WITH ❤️ BY ANDY67</p>
+        <p class="footer-thanks">THANKS FOR EXPLORING MY DIGITAL WORLD!</p>
+        <a href="#home" class="back-to-top-btn" aria-label="Scroll Back to Top">
+          <span>TOP</span>
+          <span class="arrow-up">▲</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sound Audio Synthesizer & Main Script -->
+  <script src="script.js"></script>
+</body>
 </html>
